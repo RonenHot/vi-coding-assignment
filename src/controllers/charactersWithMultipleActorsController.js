@@ -3,7 +3,10 @@ const { movies } = require('../../dataForQuestions');
 
 const getCharactersWithMultipleActorsController = async (req, res) => {
   try {
+    console.log('charactersWithMultipleActorsController -> getCharactersWithMultipleActorsController: Start fetching character actors');
     const characterActorsMap = await fetchCharacterActors();
+    console.log('charactersWithMultipleActorsController -> getCharactersWithMultipleActorsController: Finish fetching character actors');
+
     const characterActorsKeyValue = Object.entries(characterActorsMap);
     
     const resultsEntries = characterActorsKeyValue.filter(([_, actors]) => actors.length > 1);
@@ -11,6 +14,7 @@ const getCharactersWithMultipleActorsController = async (req, res) => {
 
     res.json(results);
   } catch (error) {
+    console.error('charactersWithMultipleActorsController -> getCharactersWithMultipleActorsController: Failed to return actor characters. error: ', error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 };

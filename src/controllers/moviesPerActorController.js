@@ -36,7 +36,10 @@ const optimizedGetMoviesPerActorController = async (req, res) => {
   try {
     const results = {};
 
+    console.log('moviesPerActorController -> optimizedGetMoviesPerActorController: Start fetching actor movies');
     const actorMoviesMap = await optimizedFetchActorMovies();
+    console.log('moviesPerActorController -> optimizedGetMoviesPerActorController: Finish fetching actor movies');
+
     const actorNamesSet = new Set(Object.keys(actorMoviesMap));
 
     for (const actorName of actors) {
@@ -49,6 +52,7 @@ const optimizedGetMoviesPerActorController = async (req, res) => {
 
     res.json(results);
   } catch (error) {
+    console.error('moviesPerActorController -> optimizedGetMoviesPerActorController: Failed to return actor movies. error:', error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 };

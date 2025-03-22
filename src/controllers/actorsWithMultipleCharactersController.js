@@ -5,7 +5,10 @@ const getActorsWithMultipleCharactersController = async (req, res) => {
   try {
     const results = {};
 
+    console.log('actorsWithMultipleCharactersController -> getActorsWithMultipleCharactersController: Start fetching actor characters ');
     const actorCharactersMap = await fetchActorCharacters();
+    console.log('actorsWithMultipleCharactersController -> getActorsWithMultipleCharactersController: Finish fetching actor characters ');
+
     const actorNamesSet = new Set(Object.keys(actorCharactersMap));
 
     for (const actorName of actors) {
@@ -18,6 +21,7 @@ const getActorsWithMultipleCharactersController = async (req, res) => {
 
     res.json(results);
   } catch (error) {
+    console.error('actorsWithMultipleCharactersController -> getActorsWithMultipleCharactersController: Failed to return actor characters. error: ', error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 };
