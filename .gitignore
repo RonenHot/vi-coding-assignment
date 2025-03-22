@@ -1,9 +1,13 @@
 # Dependency directories
 node_modules/
 
+
+.env
 .idea
 
 # Logs
 logs
 *.log
 npm-debug.log*
+
+.DS_Store

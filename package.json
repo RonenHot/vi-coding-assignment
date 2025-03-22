@@ -1,16 +1,19 @@
 {
-  "name": "coding-assignment",
-  "version": "1.0.0",
+  "name": "vi-coding-assignment",
+  "version": "1.0.1",
   "description": "Vi's Coding Assignment (Engineering Team)",
   "main": "src/index.js",
-  "author": "Alon Kaduri <alonk@vi.co>",
+  "author": "Ronen Hotyanov",
   "scripts": {
+    "start": "node src/index.js",
     "test": "jest"
   },
   "devDependencies": {
     "jest": "^28.1.0"
   },
   "dependencies": {
-    "axios": "^0.27.2"
+    "axios": "^0.27.2",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2"
   }
 }

@@ -1,9 +1,17 @@
-const axios = require('axios').default;
+require('dotenv').config();
+const express = require('express');
+const moviesPerActorRouter = require('./routes/moviesPerActor');
+const actorsWithMultipleCharactersRouter = require('./routes/actorsWithMultipleCharacters');
+const charactersWithMultipleActorsRouter = require('./routes/charactersWithMultipleActors');
 
-const sayHey = (name) => {
-    return `Hey ${name}`
-}
+const app = express();
+const PORT = process.env.PORT;
 
-module.exports = {
-    sayHey
-}
+app.use(express.json());
+app.use('/moviesPerActor', moviesPerActorRouter);
+app.use('/actorsWithMultipleCharacters', actorsWithMultipleCharactersRouter);
+app.use('/charactersWithMultipleActors', charactersWithMultipleActorsRouter);
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
